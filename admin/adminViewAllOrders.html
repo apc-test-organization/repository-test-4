@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HALAMAMSER | Administrator Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body style="background-image: url('img/plant2.jpg'); background-size: cover;">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Halamamser</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+<div class="container">
+
+  <h1 style="text-align: center; margin-top: 100px;">Halamamser: Admin Page</h1>
+  <div class="row" style="margin-top: 120px;">
+    <div class="col-sm-5" style="text-align: right; font-size: 30px;"><a href="adminViewProducts.html">View all products</a></div>
+    <div class="col-sm-2" style="text-align: center; font-size: 30px;">|</div>
+    <div class="col-sm-5" style="text-align: left; font-size: 30px;"><a href="adminDeleteProduct.html">Delete product</a></div>
+  </div>
+
+<!--User role for login-->
+<div class="container" id="selectUserRoleLogin" style="margin-top: 30px; display: none;">
+	<form style="font-size: 20px;" id="userRoleLogin">
+		<div class="form-check-inline">
+			<label class="form-check-label" for="userCustomer">
+			  <input type="radio" class="form-check-input" id="userCustomerLogin" name="optradio" value="customerLogin" onclick="userRoleLogin()">Customer
+			</label>
+		  </div>
+		  <div class="form-check-inline">
+			<label class="form-check-label" for="userAdmin">
+			  <input type="radio" class="form-check-input" id="userAdminLogin" name="optradio" value="adminLogin" onclick="userRoleLogin()">Administrator
+			</label>
+		  </div>
+	</form>
+	</div>
+
+<!--User role for signup-->
+<div class="container" id="selectUserRoleSignup" style="margin-top: 30px; display: none;">
+	<form style="font-size: 20px;">
+		<div class="form-check-inline">
+			<label class="form-check-label" for="userCustomer">
+			  <input type="radio" class="form-check-input" id="userCustomerSignup" name="optradio" value="customerSignup" onclick="userRoleSignup()">Customer
+			</label>
+		  </div>
+		  <div class="form-check-inline">
+			<label class="form-check-label" for="userAdmin">
+			  <input type="radio" class="form-check-input" id="userAdminSignup" name="optradio" value="adminSignup" onclick="userRoleSignup()">Administrator
+			</label>
+		  </div>
+	</form>
+	</div>
+
+<!--Log in-->
+  <div class="container" id="inputLogin" style="margin-top: 30px; display:none;">
+  	<form style="font-size: 20px;" class="needs-validation" novalidate>
+  	<div class="form-group row">
+	    <label for="inputUsername" class="col-sm-6 col-form-label" style="text-align: center;" required>Username</label>
+		    <div class="col-sm-6">
+			  <input type="text" class="form-control" id="inputUsername" placeholder="Enter your username">
+		    </div>
+  	</div>
+
+	  <div class="form-group row">
+		<label for="inputPassword" class="col-sm-6 col-form-label" style="text-align: center;" required>Password</label>
+		    <div class="col-sm-6">
+		      <input type="password" class="form-control" id="inputPassword" placeholder="Enter you password">
+		    </div>
+	  </div>
+
+	<div style="text-align: center;">
+	  <button type="submit" class="btn btn-primary" id="login">Login</button>
+	</div>
+
+	</form>
+  </div>
+
+<!--Sign up-->
+	<div class="container" id="inputSignup" style="margin-top: 30px; display:none;">
+  	<form style="font-size: 20px;" class="was-validated">
+	  	<div class="form-group row">
+		    <label for="inputFirstName" class="col-sm-6 col-form-label" style="text-align: center;">First name</label>
+			    <div class="col-sm-6">
+			      <input type="text" class="form-control" id="inputFirstName" placeholder="Enter your first name" required>
+			    </div>
+	  	</div>
+
+	  <div class="form-group row">
+		<label for="inputMiddleName" class="col-sm-6 col-form-label" style="text-align: center;">Middle name</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputMiddleName" placeholder="Enter your middle name" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputLastName" class="col-sm-6 col-form-label" style="text-align: center;">Last name</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputLastName" placeholder="Enter your last name" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputHouseNum" class="col-sm-6 col-form-label" style="text-align: center;">House number</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputHouseNum" placeholder="Enter your house number" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputHouseStreet" class="col-sm-6 col-form-label" style="text-align: center;">House street</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputHouseStreet" placeholder="Enter your house street" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputBarangay" class="col-sm-6 col-form-label" style="text-align: center;">Barangay</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputBarangay" placeholder="Enter your barangay" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputCity" class="col-sm-6 col-form-label" style="text-align: center;">City/Municipality</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputCity" placeholder="Enter your city/municipality" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputCountry" class="col-sm-6 col-form-label" style="text-align: center;">Country</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputCountry" placeholder="Enter your country" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputZipCode" class="col-sm-6 col-form-label" style="text-align: center;">Zip code</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputZipCode" placeholder="Enter your zip code" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputDOB" class="col-sm-6 col-form-label" style="text-align: center;">Date of birth</label>
+		    <div class="col-sm-6">
+		      <input type="date" class="form-control" id="inputDOB" placeholder="Enter your birthday" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputGender" class="col-sm-6 col-form-label" style="text-align: center;">Gender</label>
+		    <div class="col-sm-6">
+		      <select class="form-control" id="inputGender" required>
+		        <option></option>
+		        <option>Male</option>
+		        <option>Female</option>
+		        <option>Part of LGBTQ</option>
+		        <option>Prefer not to say</option>
+		      </select>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputContactNum" class="col-sm-6 col-form-label" style="text-align: center;">Contact number</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputContactNum" placeholder="Enter your mobile number" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="inputUsername" class="col-sm-6 col-form-label" style="text-align: center;">Username</label>
+		    <div class="col-sm-6">
+		      <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="password" class="col-sm-6 col-form-label" style="text-align: center;">Password</label>
+		    <div class="col-sm-6">
+		      <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" onkeyup='check();' required>
+		    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label for="confirm_password" class="col-sm-6 col-form-label" style="text-align: center;">Confirm password</label>
+		    <div class="col-sm-6">
+		      <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" onkeyup='check();' required>
+		      <span id='message'></span>
+		    </div>
+	  </div>
+
+	  <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember" required> I agree on Halamamser's Terms and Conditions.
+	        <div class="valid-feedback">Valid.</div>
+	        <div class="invalid-feedback">Check this checkbox to continue.</div>
+      </label>
+    </div>
+
+	  <div style="text-align: center;">
+	  <button type="submit" class="btn btn-primary" id="register" disabled>Register</button>
+	  </div>
+
+	</form>
+  </div>
+
+</div>
+
+</body>
+</html>
